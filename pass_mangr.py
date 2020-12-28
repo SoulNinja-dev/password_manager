@@ -9,11 +9,6 @@ db = mysql.connector.connect(
 
 mycursor = db.cursor()
 
-# mycursor.execute("CREATE TABLE Person (name VARCHAR(50), age smallint UNSIGNED, personID int PRIMARY KEY AUTO_INCREMENT)")
-
-# mycursor.execute("INSERT Person (name, age) VALUES (%s,%s)", ("Tim", 19))
-
-# db.commit()
 # CREATE TABLE main(
 #    -> id INT AUTO_INCREMENT,
 #    -> name VARCHAR(100),
@@ -31,9 +26,24 @@ password = input("now the password.. ")
 mycursor.execute("INSERT main (name,website,password) VALUES (%s,%s,%s)", (name, website, password))
 db.commit()
 
+
+
+def welcome():
+    name = input("Hey wassup, what's your good name?")
+    try:
+    
+
+
 os.system("clear")
 print("clearing screen.... ")
 print("Saved all right homie, you can leave now!")
 print("See you soon")
 
+# 1. Check if user is new or old.
+    # if old then ask for password and check.
+    # if new then setup.
+
+# 2. Options to put new password, show passwords, or change master password.
+
+# 3. Create a table for each user.
 
