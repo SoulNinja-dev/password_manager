@@ -18,6 +18,9 @@ def signup():
     print('Welcome, Hope you like your stay here at password manager,')
     print('We keep all your passwords safe and secure! ')
     print('Please enter your name again')
+    global name
+    input(name)
+
 
 def login():
     
@@ -36,7 +39,10 @@ def login():
 # main() 
 login()
 
-
+if(isNewUser==1):
+    signup()
+else:
+    print('So what u wanna do today')
 
 
 
