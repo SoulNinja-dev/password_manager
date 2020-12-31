@@ -10,21 +10,38 @@ db = mysql.connector.connect(
 cursor = db.cursor()
 
 name = input("Enter your name: ")
-print("Got it "+name)
+isNewUser=0
+isOldUser=0
+# methods 
+
+def signup():
+    print('Welcome, Hope you like your stay here at password manager,')
+    print('We keep all your passwords safe and secure! ')
+    print('Please enter your name again')
 
 def login():
     
-    qry="SELECT name FROM main WHERE name=%s"
+    qry="SELECT name FROM main WHERE name=%s"  # checking if user exists
     cursor.execute(qry, (name,))
 
     isUser=cursor.fetchone()
-
+    global isNewUser 
+    global isOldUser
     if isUser == None:
-        print("You might wanna sign up")
+        isNewUser = 1
+        print('Hello there new user, Let me take you to sign up.././')
     else:
-        print("You're in boss")
-
+        isOldUser = 1
+        print('Hi there '+name+' Welcome back to password manager')
+# main() 
 login()
+
+
+
+
+
+
+
 # CREATE TABLE main(
 #    -> id INT AUTO_INCREMENT,
 #    -> name VARCHAR(100),
@@ -32,9 +49,9 @@ login()
 #    -> password VARCHAR(255),
 #    -> PRIMARY KEY(id)
 
-# 1. Check if user is new or old.
-# if old then ask for password and check.
-# if new then setup.
+
+
+# 1. make sign up method which will allow the user to sign up.
 
 # 2. Options to put new password, show passwords, or change master password.
 
