@@ -38,12 +38,27 @@ def newUser():
     print('Yep got it! You can check back any time to retrieve your password')
     db.commit()
 
-# main()
-choice()
-print(choice)
-newUser()
-time.sleep(5)
-cursor.execute('SELECT * FROM main')
+
+def oldUser():
+    print('Welcome back, Please enter your name: ')
+    name = input()
+    print("Hey "+name+", choose an option you wanna see:")
+    print("1. View Website and Password")
+    print("2. Change website")
+    print("3. Change password")
+    print("4. Exit")
+    choice = input()
+    if choice == '1':
+        cursor.execute(
+            "SELECT website,password FROM main WHERE name=%s", (name,))
+        for x in cursor:
+            password = x
+        print(password[0])
+    if choice == '2':
+        pass
+
+        # main()
+oldUser()
 
 
 # comments for later reference
