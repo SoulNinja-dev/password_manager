@@ -53,7 +53,8 @@ def oldUser():
             "SELECT website,password FROM main WHERE name=%s", (name,))
         for x in cursor:
             password = x
-        print(password[0])
+        print('website: ' + password[0])
+        print('password: ' + password[1])
     if choice == '2':
         pass
 
