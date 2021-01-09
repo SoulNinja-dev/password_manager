@@ -9,39 +9,49 @@ db = mysql.connector.connect(
     password="password17",
     database="password_manager"
 )
-
-# global variables
 cursor = db.cursor()
 
 # methods
-choice = '0'
 
 
-def choic():
+def main():
     print("Hey, enter your choice: ")
     print('1. New User')
     print('2. Returning User')
     print('3. Exit')
-    global choice
     choice = input()
+    print('----------------~---------------')
+    if choice == '1':
+        newUser()
+    if choice == '2':
+        oldUser()
+    if choice == '3':
+        exit()
 
 
 def newUser():
     print('Hey enter your name: ')
     name = input()
-    print('got it! now enter the website you want to store your password for')
+    print('')
+    print('Got it! now enter the website you want to store your password for')
     website = input()
-    print('got that, now your secret password: ')
+    print('')
+    print('Got that, now your secret password: ')
     password = input()
+    print('')
     cursor.execute(
         'INSERT INTO main (name,website,password) VALUES (%s,%s,%s)', (name, website, password))
     print('Yep got it! You can check back any time to retrieve your password')
     db.commit()
+    print('----------------~---------------')
+    time.sleep(2)
 
 
 def oldUser():
+    print('----------------~---------------')
     print('Welcome back, Please enter your name: ')
     name = input()
+    print('')
     print("Hey "+name+", choose an option you wanna see:")
     print("1. View Website and Password")
     print("2. Change website")
@@ -49,7 +59,6 @@ def oldUser():
     print("4. Exit")
     choice = input()
     print('----------------~---------------')
-
     password = '', ''
     if choice == '1':
         cursor.execute(
@@ -60,16 +69,12 @@ def oldUser():
         print('password: ' + password[1])
         print('----------------~---------------')
     if choice == '2':
-        print('Current website: ' + password[0])
-        print('1. Change website name')
-        print('2. Exit')
-        choice2 = input()
         print('New Website name: ')
         newWebsiteName = input()
         cursor.execute(
             'UPDATE main SET website=%s WHERE name=%s', (newWebsiteName, name,))
         db.commit()
-        print('Changed..')
+        print('Changed...')
         print('----------------~---------------')
     if choice == '3':
         print('Enter your new secure password: ')
@@ -78,18 +83,12 @@ def oldUser():
             'UPDATE main SET password=%s WHERE name=%s', (newPassword, name,))
         db.commit()
         print('Changed...')
+        print('')
     if choice == '4':
         exit()
+    time.sleep(2)
 
 
 # main()
-choic()
-
-if choice == '1':
-    newUser()
-if choice == '2':
-    oldUser()
-if choice == '3':
-    exit()
-else:
-    choic()
+while True:
+    main()
