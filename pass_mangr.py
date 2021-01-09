@@ -48,6 +48,9 @@ def oldUser():
     print("3. Change password")
     print("4. Exit")
     choice = input()
+    print('----------------~---------------')
+
+    password = '', ''
     if choice == '1':
         cursor.execute(
             "SELECT website,password FROM main WHERE name=%s", (name,))
@@ -55,25 +58,27 @@ def oldUser():
             password = x
         print('website: ' + password[0])
         print('password: ' + password[1])
+        print('----------------~---------------')
     if choice == '2':
-        pass
+        print('Current website: ' + password[0])
+        print('1. Change website name')
+        print('2. Exit')
+        choice2 = input()
+        print('New Website name: ')
+        newWebsiteName = input()
+        cursor.execute(
+            'UPDATE main SET website=%s WHERE name=%s', (newWebsiteName, name,))
+        db.commit()
+        print('Changed..')
+        print('----------------~---------------')
+    if choice == '3':
+        print('Enter your new secure password: ')
+        newPassword = input()
+        cursor.execute(
+            'UPDATE main SET password=%s WHERE name=%s', (newPassword, name,))
+        db.commit()
+        print('Changed...')
 
-        # main()
+
+# main()
 oldUser()
-
-
-# comments for later reference
-
-
-# def login():
-# qry = "SELECT name FROM main WHERE name=%s"  # checking if user exists
-#cursor.execute(qry, (name,))
-#isUser = cursor.fetchone()
-# global isNewUser
-#  global isOldUser
-#   if isUser == None:
-#        isNewUser = 1
-#        print('Hello there new user, Let me take you to sign up.././')
-#    else:
-#        isOldUser = 1
-#        print('Hi there '+name+' Welcome back to password manager')
