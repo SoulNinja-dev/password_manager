@@ -12,7 +12,6 @@ db = mysql.connector.connect(
 
 # global variables
 cursor = db.cursor()
-choice = 0
 
 # methods
 
@@ -78,7 +77,19 @@ def oldUser():
             'UPDATE main SET password=%s WHERE name=%s', (newPassword, name,))
         db.commit()
         print('Changed...')
+    if choice == '4':
+        exit()
 
 
 # main()
-oldUser()
+choice()
+
+if choice == '1':
+    newUser()
+if choice == '2':
+    oldUser()
+if choice == '3':
+    exit()
+else:
+    print('enter 1, 2 or 3')
+    choice()
