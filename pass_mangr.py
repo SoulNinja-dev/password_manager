@@ -14,9 +14,10 @@ db = mysql.connector.connect(
 cursor = db.cursor()
 
 # methods
+choice = '0'
 
 
-def choice():
+def choic():
     print("Hey, enter your choice: ")
     print('1. New User')
     print('2. Returning User')
@@ -82,7 +83,7 @@ def oldUser():
 
 
 # main()
-choice()
+choic()
 
 if choice == '1':
     newUser()
@@ -91,4 +92,4 @@ if choice == '2':
 if choice == '3':
     exit()
 else:
-    exit()
+    choic()
