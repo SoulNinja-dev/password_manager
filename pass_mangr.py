@@ -90,5 +90,5 @@ if choice == '2':
     oldUser()
 if choice == '3':
     exit()
-if choice != '1' or choice != '2' or choice != '3':
-    print('choice does not exist')
+else:
+    exit()
